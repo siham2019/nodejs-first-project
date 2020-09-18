@@ -1,0 +1,48 @@
+
+   <!-- <div class="container"> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link <%=title==='home'?'active':''%>" href="/">Home</a>
+           
+            <% if(sid){
+              
+              
+                if(isAdmin){
+                   %>
+                      
+                    <a class="nav-link" href="/admin/add">add</a>
+                    <a class="nav-link" href="/admin/orders">manage orders</a>
+                   <%
+                }else{
+              %>
+              
+              <a class="nav-link <%=title==='order'?'active':''%>" href="/order">orders</a>
+              <a class="nav-link <%=title==='cart'?'active':''%>" href="/cart">cart</a>
+               
+            
+             <% }
+             %>
+             <form action="/logout" method="post">
+              <input type="submit" value="logout" class="btn btn btn-info">
+           </form>
+             <%
+              }else{
+            
+              %>
+              <a class="nav-link" href="/signup">signup</a>
+              <a class="nav-link" href="/login">login</a>
+             
+           <% } %>
+          </div>
+        </div>
+      </nav>
+   <!-- </div> -->
+
+
+
+

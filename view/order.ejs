@@ -1,0 +1,21 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>  
+<% console.log("fffffff ",m) %>
+<div class="container">
+       <h2>adress</h2>
+    <form action="/order/add" method="post">
+        <input type="text" name="adress" class="form-control">
+       <input type="hidden" name="quantity"   value="<%=m.quantity %>">
+       <input type="hidden" name="idpro" value="<%=m.idpro %>">
+       <input type="hidden" name="name" value="<%=m.name
+       %>">
+       <input type="hidden" name="idc" value="<%=m.idc %>">
+       <input type="hidden" name="price" value="<%=m.price %>">
+       <input type="hidden" name="idu" value="<%=sid %>">
+       <input type="submit" class="btn btn-primary"  value="order">
+    </form>
+</div>
+
+
+
+<%-include('parts/footer')%> 

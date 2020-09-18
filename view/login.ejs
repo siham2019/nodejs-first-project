@@ -1,0 +1,48 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>  
+<div class="container">
+    
+    <H2 style="text-align: center;">login</H2>
+<form method="POST">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">username</label>
+        <input type="text"  name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <% 
+          let g=validatel.find(e=> e.param === "username")
+          if(g){
+             %>
+             <p class="alert alert-danger" role="alert"><%=g.msg%></p>
+             <%
+          }
+        %>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        <% 
+         g=validatel.find(e=> e.param === "password")
+        if(g){
+           %>
+           <p class="alert alert-danger" role="alert"><%=g.msg%></p>
+           <%
+        }
+      %>
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="submit">
+
+    </form>
+    <p>you don't have account click here <a href="/signup">signup</a></p> 
+  
+     <% 
+       if(validate){
+         %>
+           <p class="alert alert-danger" role="alert"> <%=validate%> </p>
+       <%}
+       
+     %>
+</div>
+
+<%-include('parts/footer')%>      

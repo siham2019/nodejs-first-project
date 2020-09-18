@@ -1,0 +1,34 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>  
+<% 
+     if(d.length>0){
+       %>
+       <table>
+           <tr>
+               <th>name of product</th>
+               <th>price </th>
+               <th>amount</th>
+               <th> status</th>
+               <th>adress</th>
+           </tr>
+           <%
+            for (const p of d) {
+           %>
+                   <tr>
+                       <td><%=p.name%></td>
+                       <td><%=p.price%></td>
+                       <td><%=p.amount%></td>
+                       <td><%=p.status%></td>
+                       <td><%=p.adress%></td>
+                   </tr>         
+           <%
+            }
+           %>
+      </table>
+        <%
+    }else{
+      %>
+      <p>there is no order added</p>
+     <% } %>
+
+<%-include('parts/footer')%> 

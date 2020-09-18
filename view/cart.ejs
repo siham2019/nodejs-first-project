@@ -1,0 +1,58 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>  
+
+ <div class="container">
+     
+       <%
+            if(ca.length > 0){
+              if(up){
+                %>
+                <div class="alert alert-danger" role="alert">
+                  <p> <%=up.msg%> </p>
+                 </div>
+                <%
+              }
+                for (const cf of ca) {
+                    
+         
+               %>
+               <div class="card-group">
+                <div class="card" style="width: 18rem;">
+                 
+                  <div class="card-body">
+                    <h5 class="card-title"><%=cf.name%></h5>
+                    <h6 class="card-text"><%=cf.price%> £</h6>
+                    
+                    <form  method="post">
+                        <input type="number" name="quantity"  class="form-control" value="<%=cf.amount%>">
+                        <input type="hidden" name="idpro" value="<%=cf.pid%>">
+                        <input type="hidden" name="name" value="<%=cf.name%>">
+                        <input type="hidden" name="idc" value="<%=cf._id%>">
+                        <input type="hidden" name="price" value="<%=cf.price%>">
+                        <input type="hidden" name="idu" value="<%=sid%>">
+                        <input type="submit" class="btn btn-primary" formaction="/cart/save" value="save">
+                        <input type="submit" formaction="/order/demand"  value="order">
+                        <input type="submit" class="btn btn-danger" formaction="/cart/delete" value="delete">
+                    </form>
+                  </div>
+
+                  <div class="card-footer">
+                    <small class="text-muted">Last updated <%=cf.timea%> ago</small>
+                  </div>
+                </div>
+             
+               <%
+                }
+            }else{
+                %>
+               <div class="alert alert-danger" role="alert">
+                 <p> there is no product for you </p>
+               </div>
+               <%
+            }
+       %>
+ </div>
+
+
+
+<%-include('parts/footer')%> 

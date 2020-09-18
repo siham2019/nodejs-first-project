@@ -1,0 +1,53 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>
+<div class="container">
+<%
+  if(!product){
+   %>
+
+   <div class="alert alert-danger" role="alert">
+    this product does not exist
+  </div>
+
+
+  <%} else{
+    %>
+
+        
+
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+         
+            <img class="card-img-top" src="/<%=product.image%>"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+  
+              <h5 class="card-title"><%=product.name%></h5>
+              <p class="card-text"><%=product.description%></p>
+              <h6><%=product.price%> £</h6>
+              <input type="number" name="quantity" class="form-control">
+              <input type="submit" class="btn btn-primary" value="add to cart">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+
+
+
+
+    <%
+  } 
+
+
+%>
+</div>
+<%-include('parts/footer')%>  

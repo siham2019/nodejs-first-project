@@ -1,0 +1,70 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>  
+<div class="container">
+
+  <form  method="get">
+    <select name="category" class="custom-select" id="inputGroupSelect01">
+      <option value="all">all</option>
+      <option value="eye">eye</option>
+      <option value="face">face</option>
+      <option value="lip">lip</option>
+    </select>
+    <input type="submit" class="btn bg-danger" value="submit">
+  </form>
+    <% if(product.length===0){
+     %>
+
+     <div class="alert alert-danger" role="alert">
+      there is no product for instance
+    </div>
+
+
+
+
+    <%}else{
+         if(c){
+             %>
+             <div class="alert alert-danger" role="alert">
+              <%=c.msg%>
+            </div>
+             <%
+         }
+      %>
+      
+      <div class="row">
+        <%
+            for (let p of product) {
+                %>
+               
+                    <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" >
+                    <img src="<%=p.image %>" class="card-img-top">
+                    <div class="card-body">
+                      <a class="card-title" href="/product/<%=p._id%>"><%=p.name%></a>
+                      <p><%=p.price%> £</p>
+                      <form  action="/cart" method="post">
+                        <input type="number" name="quantity" class="form-control">
+                        <input type="hidden" name="idpro" value="<%=p._id%>">
+                        <input type="hidden" name="name" value="<%=p.name%>">
+                        <input type="hidden" name="price" value="<%=p.price%>">
+                        <input type="hidden" name="idu" value="<%=sid%>">
+                        <input type="submit" class="btn btn-primary" value="add to cart">
+                      </form>
+                       
+                    </div>
+                  </div>
+                </div>
+           
+                  <%
+            }
+        %>
+
+
+      <%
+    }%>
+    
+</div>
+</div>
+<%-include('parts/footer')%>  
+
+  

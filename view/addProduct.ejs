@@ -1,0 +1,59 @@
+<%-include('parts/header')%>
+<%-include('parts/nav')%>  
+  <div class="container">
+      <h2>add product</h2>
+      <form method="POST" action="/admin/add" enctype="multipart/form-data">
+          <div class="form-group">
+            <label >name</label>
+            <input type="text"  name="name" class="form-control" >
+            <% var r=pro.find(e=> e.param == "name")
+              if(r){
+              %>
+              <p class="alert alert-danger" role="alert"><%=r.msg%></p>
+              <% }
+            %>
+          </div>
+          <div class="form-group">
+            <label >price</label>
+            <input type="number"  name="price" class="form-control" >
+            <% var r=pro.find(e=> e.param == "price")
+            if(r){
+            %>
+            <p class="alert alert-danger" role="alert"><%=r.msg%></p>
+            <% }
+            %>
+          </div>
+          <div class="form-group">
+            <label >description</label>
+            <textarea class="form-control" name="description">
+            </textarea>
+            <% var r=pro.find(e=> e.param == "description")
+            if(r){
+            %>
+            <p class="alert alert-danger" role="alert"><%=r.msg%></p>
+            <% }
+            %>
+          </div>
+          <div class="form-group">
+            <label >category</label>
+            <select  name="category" class="form-control" >
+                <option value="eye">eye</option>
+                <option value="face">face</option>
+                <option value="lip">lip</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >image</label>
+            <input type="file"  name="image" class="form-control" >
+            <% var r=pro.find(e=> e.param == "image")
+            if(r){
+            %>
+            <p class="alert alert-danger" role="alert"><%=r.msg%></p>
+            <% }
+            %>
+          </div>
+          <input type="submit" value="submit" class="btn btn-primary">
+      </form>
+  </div>
+
+<%-include('parts/footer')%> 
